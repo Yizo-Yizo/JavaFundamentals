@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Chapter07 {
 	
@@ -323,42 +329,129 @@ public class Chapter07 {
 	//		}
 			
 			// 7.20
-			Scanner input = new Scanner(System.in);
-			double[] numbers = new double[10];
-			
-			// Prompt the user to enter ten numbers
-			System.out.print("Enter ten numbers ");
-			for (int i = 0; i < numbers.length; i++) {
-				numbers[i] = input.nextInt();
-			}
-			input.close();
-			selectionSort(numbers);
-			
-			for (double number : numbers) {
-				System.out.print(number + " ");
+//			Scanner input = new Scanner(System.in);
+//			double[] numbers = new double[10];
+//			
+//			// Prompt the user to enter ten numbers
+//			System.out.print("Enter ten numbers ");
+//			for (int i = 0; i < numbers.length; i++) {
+//				numbers[i] = input.nextInt();
+//			}
+//			input.close();
+//			selectionSort(numbers);
+//			
+//			for (double number : numbers) {
+//				System.out.print(number + " ");
+//			}
+		
+		// 7.23
+//		boolean[] array = new boolean[100];
+//		boolean[] L = new boolean[100];
+//		
+//		for (int i = 0; i < array.length; i++) {
+//			L[i] = true;
+//		}
+//		
+//		for (int i = 1; i < array.length; i++) {
+//			
+//			L[i] = false;
+//		}
+//		
+//		for (int i = 3; i < array.length; i++) {
+//			
+//			for (int j = 1; i < array.length; i++) {
+//				if (j%i == 0) {
+//					if (L[i]) {
+//						L[i] = false;
+//					}else if (!L[i]) {
+//						L[i] = true;
+//					}
+//				}
+//			}
+//		}
+//		
+//		for (boolean a : L) {
+//			System.out.print(a + " ");
+//		}
+		
+		// 7.24
+//		String[] suits = {"Spade", "Diamonds", "Clubs", "Heart"};
+//		String[] numbers = {"King", "Queen", "Jack", "Ace", "2", "3", "4", "5", "6", "7", "8", "9"};
+		
+		var input = "0,1,2,3,4,6,7,8,11,12,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,30,31,32,33,35,36,37,38,39";
+		List<String> numbers = Arrays.asList(input.split(","));
+		//Collections.sort(numbers);
+		List<Integer> sortedNumbers = new ArrayList<Integer>();
+		sortedNumbers.addAll(numbers.stream().map(Integer::valueOf).collect((Collectors.toList())));
+		Collections.sort(sortedNumbers);
+		
+		
+		summarizeCollection(sortedNumbers);
+		System.out.println(summarizeCollection(sortedNumbers));
+	}
+	
+	public static String summarizeCollection(Collection<Integer> input) {
+		//ArrayList<Integer> input = new ArrayList<Integer>();
+		int lengthOfInput = input.size();
+		int firstIndex = 0, secondIndex = 0;
+		//String summarizedCollection = "";
+		StringBuilder summarizedCollection = new StringBuilder();
+		
+		while (firstIndex < lengthOfInput) {
+			while ((++secondIndex < lengthOfInput) && (((List<Integer>) input).get(secondIndex) - ((List<Integer>) input).get(secondIndex -1) == 1));
+				
+			if (secondIndex - firstIndex > 2) {
+				//System.out.printf("%s-%s", ((List<Integer>) input).get(firstIndex), ((List<Integer>) input).get(secondIndex - 1));
+				summarizedCollection.append(String.format("%s-%s,", (((List<Integer>) input).get(firstIndex)), ((List<Integer>) input).get(secondIndex - 1)));
+				firstIndex = secondIndex;
+			}else {
+				for (; firstIndex < secondIndex; firstIndex++) {
+					//System.out.printf("%s,", ((List<Integer>) input).get(firstIndex));
+					summarizedCollection.append(String.format("%s,", ((List<Integer>) input).get(firstIndex)));
+				}
+				
 			}
 		}
+		return summarizedCollection.toString();
+	}
+	
+	// 7.24
+	
+//	public static void pickCard(String[] suits, String[] numbers) {
+//		
+//		do {
+//			int count = 0;
+//			
+//			int random = (int)(Math.random()*4)+1;
+//			var suit = suits[random];
+//			var number = numbers[random];
+//			
+//			count++;
+//		}
+//		while(!(suit = "Heatnh"))
+//		
+//	}
 		
 		// 7.20
-		public static void selectionSort(double[] list) {
-			
-			for (int i = 0; i < list.length-1; i++) {
-				double currentMax = list[i];
-				int currentMaxIndex = i;
-				
-				for (int j = i+1; j < list.length; j++) {
-					if (currentMax < list[j]) {
-						currentMax = list[j];
-						currentMaxIndex = j;
-					}
-				}
-				
-				if (currentMaxIndex != i) {
-					list[currentMaxIndex] = list[i];
-					list[i] = currentMax;
-				}
-			}
-		}
+//		public static void selectionSort(double[] list) {
+//			
+//			for (int i = 0; i < list.length-1; i++) {
+//				double currentMax = list[i];
+//				int currentMaxIndex = i;
+//				
+//				for (int j = i+1; j < list.length; j++) {
+//					if (currentMax < list[j]) {
+//						currentMax = list[j];
+//						currentMaxIndex = j;
+//					}
+//				}
+//				
+//				if (currentMaxIndex != i) {
+//					list[currentMaxIndex] = list[i];
+//					list[i] = currentMax;
+//				}
+//			}
+//		}
 		// 7.19
 	//		public static boolean isSorted(int[] list) {
 	//			
