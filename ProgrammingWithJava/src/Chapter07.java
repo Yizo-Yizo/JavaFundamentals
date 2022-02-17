@@ -549,7 +549,64 @@ public class Chapter07 {
 //		word[index] = letter; 
 //		
 //		System.out.print("Enter a letter in word " + asterisk + " > ");
+		
+		//Show out come of this code
+//		int[][] array = {{1,2}, {3,4}, {5,6}};
+//		for (int i = array.length - 1; i >= 0; i--) {
+//			for (int j = array[i].length - 1; j >= 0; j--)
+//				System.out.print(array[i][j] + " ");
+//			System.out.println();
+//		}
+		
+		// Show the output of the following code
+//		int[][] array = {{1,2}, {3,4}, {5,6}};
+//		int sum = 0;
+//		for (int i = 0; i < array.length; i++) {
+//			sum += array[i][0];
+//		System.out.println(sum);
+//		}
+		
+		// Show the output of the following code:
+//		int[][] array = {{1,2,3,4,4}, {5,6,7,8}};
+//		System.out.println(m1(array)[0]);
+//		System.out.println(m1(array)[1]);
+		
+		//8.1
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter a 3-by-4 matrix row by row: ");
+		double[][] m = new double[3][4];
+		for (int i = 0; i < m.length; i++) {
+			for (int j = 0; j < m[i].length; j++) {
+				m[i][j] = input.nextDouble();
+			}
+		}
+		
+		sumColumn(m);
 	}
+	
+	//8.1
+	public static void sumColumn(double[][] m) {
+		
+		
+		int column;
+		for (column = 0; column < m[0].length; column++) {
+			double total = 0;
+			for (int row = 0; row < m.length; row++) {
+				total += m[row][column];
+			}
+			System.out.println("Sum for column " + column + " is " + total);
+			
+		}
+	}
+	
+	//Show the output of the following code:
+//	public static int[] m1(int[][] m) {
+//		int[] result = new int[2];
+//		result[0] = m.length;
+//		result[1] = m[0].length;
+//		return result;
+//	}
 	//7.35
 //		public static void hangman(char c, char[] wordArray, int index, int count){
 //			
