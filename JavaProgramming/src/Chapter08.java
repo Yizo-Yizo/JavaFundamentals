@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Chapter08 {
@@ -196,83 +197,332 @@ public class Chapter08 {
 //		System.out.println("Their distance is: " + shortestDistance);
 		
 		// 8.9
-		Scanner input = new Scanner(System.in);
+//		Scanner input = new Scanner(System.in);
+//		
+//		String[][] grid = new String[3][3];
+//		
+//		boolean turns = false;
+//		boolean status = true;
+//		
+//		String player1 = "X", player2 = "O";
+//		
+//		while(status) {
+//			var result = turns ? player1 : player2;
+//			System.out.print("Enter a row (0, 1, or 2) for player " + result + " : ");
+//			int row = input.nextInt();
+//			System.out.print("Enter a column (0, 1, or 2) for player " + result + " : ");
+//			int column = input.nextInt();
+//			grid[row][column] = result;
+//			
+//			// Change players turns
+//			if (turns == true) {
+//				
+//				turns = false;
+//			}
+//			else{
+//				
+//				turns = true;
+//			}
+//			
+//			// Determining a win
+//			if (grid[0][0] == result && grid[1][1] == result && grid[2][2] == result) {
+//				
+//				System.out.println(result + " player won");
+//				status = false;
+//			}
+//			else if (grid[0][2] == result && grid[1][1] == result && grid[2][0] == result) {
+//				
+//				System.out.println(result + " player won");
+//				status = false;
+//			}
+//			else if (grid[0][0] == result && grid[0][1] == result && grid[0][2] == result) {
+//				
+//				System.out.println(result + " player won");
+//				status = false;
+//			}
+//			else if (grid[1][0] == result && grid[1][1] == result && grid[1][2] == result) {
+//				
+//				System.out.println(result + " player won");
+//				status = false;
+//			}
+//			else if (grid[2][0] == result && grid[2][1] == result && grid[2][2] == result) {
+//				
+//				System.out.println(result + " player won");
+//				status = false;
+//			}
+//			else if (isFull(grid)) { // Determining a draw
+//				
+//				System.out.println("It's a draw");
+//				status = false;
+//			}
+//			else {
+//				status = true;
+//			}
+//		}
+//		input.close();
 		
-		String[][] grid = new String[3][3];
+		//8.9 answer from gitHub
+//		String[][] board = getBoard();
+//		
+//		// Create two players token
+//		String[] tokens = {" X "," O "};
+//		
+//		int result; // game status result
+//		
+//		do {
+//			
+//			// Display board
+//			print(board);
+//			
+//			// Get available cell to mark
+//			int[] cell = getCell(board, tokens[0]);
+//			
+//			// Mark available cell with player's token
+//			placeToken(board, cell, tokens[0]);
+//			
+//			// Determine game status
+//			result = gameStatus(board, tokens[0]);
+//			
+//			if (result == 2) {
+//				swap(tokens);
+//			}
+//		}
+//		while(result == 2);
+//		
+//		// Display board
+//		print(board);
+//		
+//		// Display game results
+//		if (result == 0)
+//			System.out.println(tokens[0] + "Player won");
+//		else
+//			System.out.println("Players draw");
 		
-		boolean turns = false;
-		boolean status = true;
-		
-		String player1 = "X", player2 = "O";
-		
-		while(status) {
-			var result = turns ? player1 : player2;
-			System.out.print("Enter a row (0, 1, or 2) for player " + result + " : ");
-			int row = input.nextInt();
-			System.out.print("Enter a column (0, 1, or 2) for player " + result + " : ");
-			int column = input.nextInt();
-			grid[row][column] = result;
-			
-			// Change players turns
-			if (turns == true) {
-				
-				turns = false;
-			}
-			else{
-				
-				turns = true;
-			}
-			
-			// Determining a win
-			if (grid[0][0] == result && grid[1][1] == result && grid[2][2] == result) {
-				
-				System.out.println(result + " player won");
-				status = false;
-			}
-			else if (grid[0][2] == result && grid[1][1] == result && grid[2][0] == result) {
-				
-				System.out.println(result + " player won");
-				status = false;
-			}
-			else if (grid[0][0] == result && grid[0][1] == result && grid[0][2] == result) {
-				
-				System.out.println(result + " player won");
-				status = false;
-			}
-			else if (grid[1][0] == result && grid[1][1] == result && grid[1][2] == result) {
-				
-				System.out.println(result + " player won");
-				status = false;
-			}
-			else if (grid[2][0] == result && grid[2][1] == result && grid[2][2] == result) {
-				
-				System.out.println(result + " player won");
-				status = false;
-			}
-			else if (isFull(grid)) { // Determining a draw
-				
-				System.out.println("It's a draw");
-				status = false;
-			}
-			else {
-				status = true;
-			}
-		}
-		
+		// 8.10
+//		Random rand = new Random();
+//		
+//		int[][] m = new int[4][4];
+//		
+//		populateArray(m, rand);
+//		printArray(m);
+//		largestRowColumn(m);
 	}
+	
+	// 8.10
+	
+//	public static void largestRowColumn(int[][] m){
+//		
+//		int[] rowSum = new int[4];
+//		int row = 0;
+//		int largestRow = 0;
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				row += m[i][j];
+//			}
+//			rowSum[i] = row;
+//			
+//			if (largestRow < rowSum[i]) {
+//				
+//				largestRow = i;
+//			}
+//		}
+//		System.out.println("The largest row index: " + largestRow);
+//		
+//		int[] columnSum = new int[4];
+//		int column = 0;
+//		int largestColumn = 0;
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				column += m[j][i];
+//			}
+//			columnSum[i] = column;
+//			
+//			if (largestColumn < columnSum[i]) {
+//				
+//				largestColumn = i;
+//			}
+//		}
+//		System.out.println("The largest column index: " + largestColumn);
+//	}
+//	
+//	public static void populateArray(int[][] m, Random rand){
+//		
+//		int number;
+//		
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				
+//				number = rand.nextInt(2);
+//				m[i][i] = number;
+//			}
+//		}
+//	}
+//	
+//	public static void printArray(int[][] m) {
+//		
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				
+//				System.out.print(m[i][j]);
+//				
+//			}
+//			System.out.println();
+//		}
+//	}
+	
+	// 8.9 Answer form GitHub
+	
+//	public static int gameStatus(String[][] m, String e) {
+//		if (isWin(m, e))
+//			return 0; // win
+//		
+//		else if (isDraw(m))
+//			return 1; // Draw
+//		
+//		else
+//			return 2; // Continue
+//	}
+//	
+//	public static boolean isWin(String[][] m, String t) {
+//		return isHorizontalWin(m, t) || isVerticalWin(m, t) || isDiagonalWin(m, t);
+//	}
+//	
+//	public static boolean isHorizontalWin(String[][] m, String t) {
+//		for (int i = 0; i < m.length; i++) {
+//			int count = 0;
+//			for (int j = 0; j < m[i].length; j++) {
+//				if (m[i][j] == t)
+//					count++;
+//			}
+//			if (count == 3)
+//				return true;
+//		}
+//		return false;
+//	}
+//	
+//	public static boolean isVerticalWin(String[][] m, String t) {
+//		
+//		for (int i = 0; i < m.length; i++) {
+//			int count = 0;
+//			for (int j = 0; j < m[i].length; j++) {
+//				if (m[j][i] == t)
+//					count++;
+//			}
+//			if (count == 3)
+//				return true;
+//		}
+//		return false;
+//	}
+//	
+//	public static boolean isDiagonalWin(String[][] m, String t) {
+//		
+//		int count = 0;
+//		for (int i = 0; i < m.length; i++) {
+//			if (m[i][i] == t)
+//				count++;
+//			if (count == 3)
+//				return true;
+//		}
+//		count = 0;
+//		for (int i = 0, j = m[i].length - 1; j >= 0; j--, i++) {
+//			
+//			if (m[i][j] == t)
+//				count++;
+//			if (count == 3)
+//				return true;
+//		}
+//		return false;
+//	}
+//	
+//	public static boolean isDraw(String[][] m) {
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				if (m[i][j] == "  ")
+//					return false;
+//			}
+//		}
+//		return true;
+//	}
+//	
+//	public static void swap(String[] p) {
+//		String temp = p[0];
+//		p[0] = p[1];
+//		p[1] = temp;
+//	}
+//	
+//	public static void placeToken(String[][] m, int[] e, String t) {
+//		m[e[0]][e[1]] = t;
+//	}
+//	
+//	public static int[] getCell(String[][] m, String t) {
+//		
+//		Scanner input = new Scanner(System.in);
+//		int[] cell = new int[2]; // Cell row and column
+//		
+//		// Prompt player to enter a token
+//		do {
+//			System.out.print("Enter a row (0, 1 , or 2) for player " + t + ": ");
+//			cell[0] = input.nextInt();
+//			System.out.print("Enter a column (0, 1, or 2) for player " + t + ": ");
+//			cell[1] = input.nextInt();
+//		}
+//		while (!isValidCell(m, cell));
+//		
+//		return cell;
+//		
+//	}
+//	
+//	public static boolean isValidCell(String[][] m, int[] cell) {
+//		
+//		for (int i = 0; i < cell.length; i++) {
+//			if (cell[i] < 0 || cell[i] >= 3) {
+//				System.out.println("Invalid cell");
+//				return false;
+//			}
+//		}
+//		
+//		if (m[cell[0]][cell[1]] != "  ") {
+//			System.out.println(
+//					"\nRow " + cell[0] + " column " + cell[1] + " is filled");
+//			return false;
+//		}
+//		return true;
+//	}
+//	public static String[][] getBoard(){
+//		
+//		String[][] m = new String[3][3];
+//		for (int i = 0; i < 3; i++) {
+//			for (int j = 0; j < 3; j++) {
+//				m[i][j] = "  ";
+//			}
+//		}
+//		return m;
+//		
+//	}
+//	
+//	public static void print(String[][] m) {
+//		
+//		System.out.println("\n--------------");
+//		for (int i = 0; i < m.length; i++) {
+//			for (int j = 0; j < m[i].length; j++) {
+//				System.out.print("|" + m[i][j]);
+//			}
+//			System.out.println("|\n--------------");
+//		}
+//	}
 	
 	// 8.9
 	
-	public static boolean isFull(String[][] grid) {
-		
-		for (int i = 0; i < grid.length; i++)
-			for (int j = 0; j < grid[i].length; j++) {
-				
-				if (grid[i][j] == null)
-					return false;
-			}
-		return true;
-	}
+//	public static boolean isFull(String[][] grid) {
+//		
+//		for (int i = 0; i < grid.length; i++)
+//			for (int j = 0; j < grid[i].length; j++) {
+//				
+//				if (grid[i][j] == null)
+//					return false;
+//			}
+//		return true;
+//	}
 	
 	// 8.8
 	
