@@ -334,6 +334,46 @@ public class Chapter08 {
 //		
 //		// Calculate tax
 //		computeTax(status, income, brackets, rates);
+		
+		Scanner input = new Scanner(System.in);
+		int[] rowsColumns = new int[2];
+		
+		System.out.println("Enter the number of rows and columns of the array:");
+		for (int i = 0; i < rowsColumns.length; i++) {
+			rowsColumns[i] = input.nextInt();
+		}
+		
+		double[][] array = new double[rowsColumns[0]][rowsColumns[1]];
+		System.out.println("Enter the array:");
+		for (int row = 0; row < array.length; row++) {
+			for (int column = 0; column < array[row].length; column++) {
+				array[row][column] = input.nextDouble();
+			}
+		}
+		input.close();
+		
+		System.out.println("The location of the largetst element is at " 
+		+"(" +locateLargest(array)[0] + "," + locateLargest(array)[1] + ")");
+	}
+	// 8.13
+
+	public static int[] locateLargest(double[][] a) {
+		
+		double max = a[0][0];
+		int maxRow = 0;
+		int maxColumn = 0;
+		
+		for (int row = 0; row < a.length; row++) {
+			for (int column = 0; column < a[row].length; column++) {
+				if (max < a[row][column]) {
+					max = a[row][column];
+					maxRow = row;
+					maxColumn = column;
+				}
+			}
+		}
+		int[] maxRowColumn = {maxRow, maxColumn};
+		return maxRowColumn;
 	}
 	// 8.12
 //		public static void computeTax(int status, double income, int[][] brackets, double[] rates) {
