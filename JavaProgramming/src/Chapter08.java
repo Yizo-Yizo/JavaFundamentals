@@ -335,46 +335,210 @@ public class Chapter08 {
 //		// Calculate tax
 //		computeTax(status, income, brackets, rates);
 		
+		// 8.13
+//		Scanner input = new Scanner(System.in);
+//		int[] rowsColumns = new int[2];
+		
+//		System.out.println("Enter the number of rows and columns of the array:");
+//		for (int i = 0; i < rowsColumns.length; i++) {
+//			rowsColumns[i] = input.nextInt();
+//		}
+//		
+//		double[][] array = new double[rowsColumns[0]][rowsColumns[1]];
+//		System.out.println("Enter the array:");
+//		for (int row = 0; row < array.length; row++) {
+//			for (int column = 0; column < array[row].length; column++) {
+//				array[row][column] = input.nextDouble();
+//			}
+//		}
+//		input.close();
+//		
+//		System.out.println("The location of the largetst element is at " 
+//		+"(" +locateLargest(array)[0] + "," + locateLargest(array)[1] + ")");
+		
+		// 8.14
+//		Scanner input = new Scanner(System.in);
+//		
+//		System.out.print("Enter the size for the matrix: ");
+//		int size = input.nextInt();
+//		
+//		int[][] matrix = new int[size][size];
+//		
+//		
+//		for (int row = 0; row < matrix.length; row++) {
+//			for (int column = 0; column < matrix[row].length; column++) {
+//				double zerosAndOnes = Math.random() * 2;
+//				matrix[row][column] = (int)zerosAndOnes;
+//			}
+//		}
+//		
+//		for (int row =  0; row < matrix.length; row++) {
+//			for (int column = 0; column < matrix[row].length; column++) {
+//				System.out.print(matrix[row][column]);
+//			}
+//			System.out.println();
+//		}
+//		input.close();
+//		zerosOrOnes(matrix);
+		
 		Scanner input = new Scanner(System.in);
-		int[] rowsColumns = new int[2];
 		
-		System.out.println("Enter the number of rows and columns of the array:");
-		for (int i = 0; i < rowsColumns.length; i++) {
-			rowsColumns[i] = input.nextInt();
-		}
+		double[][] points = new double[5][2];
 		
-		double[][] array = new double[rowsColumns[0]][rowsColumns[1]];
-		System.out.println("Enter the array:");
-		for (int row = 0; row < array.length; row++) {
-			for (int column = 0; column < array[row].length; column++) {
-				array[row][column] = input.nextDouble();
+		System.out.print("Enter five points: ");
+		for (int row = 0; row < points.length; row++) {
+			for (int column = 0; column < points[row].length; column++) {
+				points[row][column] = input.nextDouble();
 			}
 		}
 		input.close();
 		
-		System.out.println("The location of the largetst element is at " 
-		+"(" +locateLargest(array)[0] + "," + locateLargest(array)[1] + ")");
+		if ( sameLine(points) == false) {
+			System.out.println("The five points are not on the same line");
+		}
+		else {
+			System.out.println("The five points are on the same line");
+		}
 	}
-	// 8.13
-
-	public static int[] locateLargest(double[][] a) {
+	
+	public static boolean sameLine(double[][] points) {
 		
-		double max = a[0][0];
-		int maxRow = 0;
-		int maxColumn = 0;
+		boolean result = false;
 		
-		for (int row = 0; row < a.length; row++) {
-			for (int column = 0; column < a[row].length; column++) {
-				if (max < a[row][column]) {
-					max = a[row][column];
-					maxRow = row;
-					maxColumn = column;
+		double x1 = points[0][0];
+		double y1 = points[0][1];
+		double x2 = points[1][0];
+		double y2 = points[1][1];
+		
+		double m = (y2 - y1) / (x2 - x1);
+		double c = y1 - (x1 * m);
+		
+		for (int row = 0; row < points.length; row ++) {
+			for (int column = 0; column < points[row].length; column++) {
+				
+				if (column == 1) {
+					
 				}
 			}
 		}
-		int[] maxRowColumn = {maxRow, maxColumn};
-		return maxRowColumn;
+		return result;
 	}
+	
+	
+	
+	// 8.14
+//	public static void zerosOrOnes(int[][] a) {
+//		
+//		//Checking for row
+//		int countRowZeros = 0;
+//		int countRowOnes = 0;
+//		int checkingRow = 0;
+//		for (checkingRow = 0; checkingRow < a.length; checkingRow++) {
+//			for (int j = 0; j < a[checkingRow].length; j++) {
+//				if (a[checkingRow][j] == 1) {
+//					countRowOnes++;
+//				}
+//				else {
+//					countRowZeros++;
+//				}
+//			}
+//			
+//		}
+//		
+//		
+//		//Checking for column
+//		int countColumnZeros = 0;
+//		int countColumnOnes = 0;
+//		int checkingColumn = 0;
+//		for (checkingColumn = 0; checkingColumn < a.length; checkingColumn++) {
+//			for (int i = 0; i < a[checkingColumn].length; i++) {
+//				if (a[i][checkingColumn] == 1) {
+//					countColumnOnes++;
+//				}
+//				else {
+//					countColumnZeros++;
+//				}
+//			}
+//			
+//		}
+//		
+//		//Checking for diagonal/sub-diagonal
+//		int countDiagonalZeros = 0;
+//		int countDiagonalOnes = 0;
+//		for (int row = 0; row < a.length; row++) {
+//			for (int column = 0; column < a[row].length; column++) {
+//				if (a[row][row] == 0 && row == column) {
+//					countDiagonalZeros++;
+//				}
+//				else {
+//					countDiagonalOnes++;
+//				}
+//			}
+//			
+//		}
+//		
+//		// Checking for zeros/ones on a row
+//		if (countRowOnes == (a.length)) {
+//			System.out.println("All 1s on row " + checkingRow);
+//		}
+//		else if (countRowZeros == (a.length)) {
+//			System.out.println("All 0s on row " + checkingRow);
+//		}
+//		else if (countRowOnes != a.length && countRowZeros != a.length){
+//			System.out.println("No same numbers on row");
+//		}
+//		
+//		// Checking for zeros/ones on a column
+//		else if (countColumnOnes == (a.length)) {
+//			System.out.println("All 1s on column " + checkingColumn);
+//		}
+//		else if (countColumnZeros == (a[1].length)) {
+//			System.out.println("All 0s on column " + checkingColumn);
+//		}
+//		else if (countColumnOnes != a.length && countColumnZeros != a.length){
+//			System.out.println("No same numbers on column");
+//		}
+//		
+//		// Checking for zeros/one on a diagonal or sub-diagonal
+//		if (countDiagonalZeros == a.length) {
+//			System.out.println("All 0s on major diagonal");
+//		}
+//		else if (countDiagonalOnes == a.length){
+//			System.out.println("All 1s on sub-diagonal");
+//		}
+//		else if (countDiagonalZeros > 0 && countDiagonalZeros != a.length) {
+//			System.out.println("All 0s on sub-diagonal");
+//		}
+//		else if (countDiagonalOnes > 0 && countDiagonalZeros != a.length) {
+//			System.out.println("All 1s on sub-diagonal");
+//		}
+//		else if (countDiagonalOnes > 0 && countDiagonalOnes != a.length){
+//			System.out.println("All 1s on major diagonal");
+//		}
+//		else if (countDiagonalOnes != a.length && countDiagonalZeros != a.length) {
+//			System.out.println("No same numbers on major diagonal");
+//		}
+//	}
+	// 8.13
+
+//	public static int[] locateLargest(double[][] a) {
+//		
+//		double max = a[0][0];
+//		int maxRow = 0;
+//		int maxColumn = 0;
+//		
+//		for (int row = 0; row < a.length; row++) {
+//			for (int column = 0; column < a[row].length; column++) {
+//				if (max < a[row][column]) {
+//					max = a[row][column];
+//					maxRow = row;
+//					maxColumn = column;
+//				}
+//			}
+//		}
+//		int[] maxRowColumn = {maxRow, maxColumn};
+//		return maxRowColumn;
+//	}
 	// 8.12
 //		public static void computeTax(int status, double income, int[][] brackets, double[] rates) {
 //			
